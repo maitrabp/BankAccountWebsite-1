@@ -14,13 +14,13 @@ $id = $_SESSION['user_id'];
 //echo $id;
 $errors = array();
 
-$userget = "SELECT user FROM bank2.customer WHERE id = '$id'";
+$userget = "SELECT user FROM heroku_cdb43a852bcdbe9.customer WHERE id = '$id'";
 $userrun = mysqli_query($db, $userget);
 $userfetch = mysqli_fetch_assoc($userrun);
 $user = $userfetch['user'];
 $flag = true;
 //echo $user;
-$accget = mysqli_query($db,"SELECT acc_no, acc_type FROM bank2.account WHERE cust_id in (SELECT id FROM bank2.customer WHERE user = '$user')");
+$accget = mysqli_query($db,"SELECT acc_no, acc_type FROM heroku_cdb43a852bcdbe9.account WHERE cust_id in (SELECT id FROM heroku_cdb43a852bcdbe9.customer WHERE user = '$user')");
     
     
     
@@ -54,7 +54,7 @@ if (isset($_POST['reg_user'])) {
             //echo $tr_type;
             //echo $tr_amount;
             //echo $tr_acc_no;
-            mysqli_query($db,"INSERT INTO bank2.transaction (cust_id,tr_type,tr_amount,tr_acc_no) VALUES ('$id','$tr_type','$tr_amount','$tr_acc_no')");
+            mysqli_query($db,"INSERT INTO heroku_cdb43a852bcdbe9.transaction (cust_id,tr_type,tr_amount,tr_acc_no) VALUES ('$id','$tr_type','$tr_amount','$tr_acc_no')");
             mysqli_query($db,"UPDATE account SET balance = balance + $tr_amount where acc_no = $tr_acc_no");
             
         }
@@ -70,7 +70,7 @@ if (isset($_POST['reg_user'])) {
             $balance = $balancefetch['balance'];
             //echo $balance;
             if($balance >= $tr_amount){
-              mysqli_query($db,"INSERT INTO bank2.transaction (cust_id,tr_type,tr_amount,tr_acc_no) VALUES ('$id','$tr_type','$tr_amount2','$tr_acc_no')");
+              mysqli_query($db,"INSERT INTO heroku_cdb43a852bcdbe9.transaction (cust_id,tr_type,tr_amount,tr_acc_no) VALUES ('$id','$tr_type','$tr_amount2','$tr_acc_no')");
               mysqli_query($db,"UPDATE account SET balance = balance - $tr_amount where acc_no = $tr_acc_no");
             }
             else{

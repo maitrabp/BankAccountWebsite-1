@@ -45,7 +45,7 @@ if (isset($_POST['reg_user'])) {
     if (count($errors) == 0) {
         //Compute amount due after interest applied for years selected
         $balance = $amount + ($amount * $interest * $years);
-        $query2 = "INSERT INTO bank2.loan (cust_id,balance,interest, years) VALUES ('$user_id','$balance','$interest', $years)";
+        $query2 = "INSERT INTO heroku_cdb43a852bcdbe9.loan (cust_id,balance,interest, years) VALUES ('$user_id','$balance','$interest', $years)";
         mysqli_query($db, $query2);
         header('location: index.php');
     }

@@ -8,7 +8,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   $myusername = mysqli_real_escape_string($db,$_POST['username']);
   $mypassword = mysqli_real_escape_string($db,$_POST['login']); 
   
-  $sql = "SELECT id FROM bank2.customer WHERE user = '$myusername' and pass = '$mypassword'";
+  $sql = "SELECT id FROM heroku_cdb43a852bcdbe9.customer WHERE user = '$myusername' and pass = '$mypassword'";
   $result = mysqli_query($db,$sql);
   $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
   $id = $row['id'];

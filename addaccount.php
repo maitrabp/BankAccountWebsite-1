@@ -21,7 +21,7 @@ if (isset($_POST['add_acc']))
     if (empty($acc_balance)) { array_push($errors, "Account Balance is required"); }
     
    //CHECK IF USER ALREADY HAS A SAVINGS ACCOUNT, OR A CHECKING ACCOUNT! FIX ME IN THE MORNING!!!!!!!!!!!!!!!
-	$result = mysqli_query($db,"SELECT acc_type FROM bank2.account WHERE cust_id = '$id' AND acc_type = '$acc_type'");
+	$result = mysqli_query($db,"SELECT acc_type FROM heroku_cdb43a852bcdbe9.account WHERE cust_id = '$id' AND acc_type = '$acc_type'");
 	$acc_rows = mysqli_num_rows($result);
     // Finally, add account if there are no errors in the form
     if (count($errors) == 0) {
@@ -29,13 +29,13 @@ if (isset($_POST['add_acc']))
 		{
 			if ($acc_type == "checking") {
            
-				mysqli_query($db,"INSERT INTO bank2.account (cust_id,acc_type,balance) VALUES ('$id','$acc_type','$acc_balance')");
+				mysqli_query($db,"INSERT INTO heroku_cdb43a852bcdbe9.account (cust_id,acc_type,balance) VALUES ('$id','$acc_type','$acc_balance')");
             
 			}
 
 			if ($acc_type == "savings") {
 			
-				mysqli_query($db,"INSERT INTO bank2.account (cust_id,acc_type,balance) VALUES ('$id','$acc_type','$acc_balance')");
+				mysqli_query($db,"INSERT INTO heroku_cdb43a852bcdbe9.account (cust_id,acc_type,balance) VALUES ('$id','$acc_type','$acc_balance')");
 			}
 			header('location: index.php');
 		}

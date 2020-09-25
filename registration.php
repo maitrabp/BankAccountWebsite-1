@@ -39,7 +39,7 @@ if (isset($_POST['reg_user'])) {
   
     // first check the database to make sure 
     // a user does not already exist with the same username and/or email
-    $user_check_query = "SELECT * FROM bank2.customer WHERE user='$username' OR ssn='$ssn' LIMIT 1";
+    $user_check_query = "SELECT * FROM heroku_cdb43a852bcdbe9.customer WHERE user='$username' OR ssn='$ssn' LIMIT 1";
     $result = mysqli_query($db, $user_check_query);
     $user = mysqli_fetch_assoc($result);
     
@@ -65,20 +65,20 @@ if (isset($_POST['reg_user'])) {
     
     if (count($errors) == 0) {
         
-        $query = "INSERT INTO bank2.customer (branch_id,ssn,user,pass,firstname,lastname,age,street,city,state) VALUES ('$branch_id','$ssn','$username','$password_1','$firstname','$lastname','$age','$street','$city','$state')";
+        $query = "INSERT INTO heroku_cdb43a852bcdbe9.customer (branch_id,ssn,user,pass,firstname,lastname,age,street,city,state) VALUES ('$branch_id','$ssn','$username','$password_1','$firstname','$lastname','$age','$street','$city','$state')";
         
         mysqli_query($db, $query);
-        $query = "SELECT * FROM bank2.customer WHERE user='$username'";
+        $query = "SELECT * FROM heroku_cdb43a852bcdbe9.customer WHERE user='$username'";
         $result = mysqli_query($db, $query);
         $test = mysqli_fetch_assoc($result);
         $user_id = $test['id'];
         
         
-        $query2 = "INSERT INTO bank2.account (cust_id,acc_type,balance) VALUES ('$user_id','$acc_type','$inidep')";
+        $query2 = "INSERT INTO heroku_cdb43a852bcdbe9.account (cust_id,acc_type,balance) VALUES ('$user_id','$acc_type','$inidep')";
         mysqli_query($db, $query2);
         //echo $test['user'];
 		
-		$query3 = "INSERT INTO bank2.cust_phone (cust_id, phone_num) VALUES ('$user_id', '$phone_num')";
+		$query3 = "INSERT INTO heroku_cdb43a852bcdbe9.cust_phone (cust_id, phone_num) VALUES ('$user_id', '$phone_num')";
 		mysqli_query($db, $query3);
         
         $_SESSION['username'] = $username;

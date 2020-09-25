@@ -39,7 +39,7 @@ if (isset($_POST['reg_user'])) {
     
     if (count($errors) == 0) {
         $balance = 0;
-        $query2 = "INSERT INTO bank2.account (cust_id,acc_type,balance) VALUES ('$user_id','$acc_type','$balance')";
+        $query2 = "INSERT INTO heroku_cdb43a852bcdbe9.account (cust_id,acc_type,balance) VALUES ('$user_id','$acc_type','$balance')";
         mysqli_query($db, $query2);
         header('location: index.php');
     }

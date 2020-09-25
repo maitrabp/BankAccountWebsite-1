@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   $myusername = mysqli_real_escape_string($db,$_POST['username']);
   $mypassword = mysqli_real_escape_string($db,$_POST['login']); 
   
-  $sql = "SELECT pass FROM bank2.customer WHERE user = '$myusername'";
+  $sql = "SELECT pass FROM heroku_cdb43a852bcdbe9.customer WHERE user = '$myusername'";
   $result = mysqli_query($db,$sql);
   $row = mysqli_fetch_array($result);
   
@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   if($count == 1) {
      
      
-     $sql = "UPDATE bank2.customer SET pass = '$mypassword' WHERE user = '$myusername'";
+     $sql = "UPDATE heroku_cdb43a852bcdbe9.customer SET pass = '$mypassword' WHERE user = '$myusername'";
      $result = mysqli_query($db,$sql);
 
     header("location: login.php");
