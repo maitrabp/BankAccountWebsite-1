@@ -2,6 +2,9 @@
 include 'db_connection.php';
 session_start();
 //User Dashboard
+if(!$_SESSION['user_id']) {
+  header("Location: ./login.php");
+}
 $id = $_SESSION['user_id'];
 //Get Client Info
 $query = "SELECT firstname, lastname FROM customer WHERE id='$id'";
