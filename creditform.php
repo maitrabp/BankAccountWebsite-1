@@ -1,9 +1,7 @@
 <?php
 //include 'db_connection.php';
 session_start();
-if(!$_SESSION['user_id']) {
-  header("Location: ./login.php");
-}
+
 define('DB_SERVER', 'us-cdbr-east-02.cleardb.com');
 define('DB_USERNAME', 'b9e3936e2f703f');
 define('DB_PASSWORD', '9e11b5b8');

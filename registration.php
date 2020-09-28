@@ -6,7 +6,6 @@ define('DB_PASSWORD', '9e11b5b8');
 define('DB_DATABASE', 'heroku_cdb43a852bcdbe9');
 $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 
-
 $username = "";
 $email    = "";
 $errors = array();
