@@ -64,7 +64,7 @@ where cust_id = '$id'");
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Loaded Bank</title>
+  <title>Bank Dashboard</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
