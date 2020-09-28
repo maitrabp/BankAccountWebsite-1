@@ -6,6 +6,9 @@ define('DB_DATABASE', 'heroku_cdb43a852bcdbe9');
 $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 //echo $id;
 session_start();
+if(!$_SESSION['user_id']) {
+  header("Location: ./login.php");
+}
 $id = $_SESSION['user_id'];
 $errors = array();
 //echo $user;
